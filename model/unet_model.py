@@ -1,8 +1,9 @@
 import tensorflow as tf
+from model.base_model_provider import AbstractModelProvider
 
-class UNetModel(object):
+class UNetModel(AbstractModelProvider):
     
-    def get_model(img_size, num_classes):
+    def get_model(self, img_size, num_classes) -> tf.keras.Model:
         inputs = tf.keras.layers.Input(shape=img_size + (3,))
         ### [First half of the network: downsampling inputs] ###
 
@@ -56,6 +57,6 @@ class UNetModel(object):
 
         # Define the model
         model = tf.keras.Model(inputs, outputs)
-        model.compile(optimizer="rmsprop", loss="sparse_categorical_crossentropy")
+        model.compile(optimizer="rmsprop", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
         return model
     
