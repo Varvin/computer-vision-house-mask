@@ -25,8 +25,8 @@ class DataProvider(keras.utils.Sequence):
         y = np.zeros((self.config.BATCH_SIZE,) + self.config.IMAGE_SIZE + (1,), dtype="uint8")
         for j, data in enumerate(batch_annotations):
             file_name = data[0]
-            mask = data[1]
-            image = cv2.cvtColor(cv2.imread(f'{self.config.IMAGE_FOLDER_PATH}/{file_name}'), cv2.COLOR_BGR2RGB)
+            mask = np.expand_dims(cv2.resize(data[1], self.config.IMAGE_SIZE), 2)
+            image = cv2.resize(cv2.cvtColor(cv2.imread(f'{self.config.IMAGE_FOLDER_PATH}/{file_name}'), cv2.COLOR_BGR2RGB), self.config.IMAGE_SIZE)
             image = image/255
 
             if(self.config.AUGMENTATION_ENABLE and np.random.rand() > 0.5):

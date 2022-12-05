@@ -16,10 +16,11 @@ class HouseMask(object):
         self.model = self.model_provider.get_model(self.config.IMAGE_SIZE, self.config.NUM_CLASSES)
     
     def train(self) -> tf.keras.Model:
-        checkpoint_filepath = 'data/checkpoint'
+        checkpoint_filepath = 'data/checkpoint/hm-{epoch:02d}-{accuracy:.2f}.h5'
         model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
             filepath=checkpoint_filepath,
-            monitor='val_accuracy',
+            save_weights_only=True,
+            monitor='accuracy',
             mode='max',
             save_best_only=True)
         self.model.fit(self.train_data_provider, epochs = self.config.EPOCHS, validation_data = self.validation_data_provider, callbacks = [model_checkpoint_callback])

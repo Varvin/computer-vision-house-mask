@@ -57,6 +57,6 @@ class UNetModel(AbstractModelProvider):
 
         # Define the model
         model = tf.keras.Model(inputs, outputs)
-        model.compile(optimizer="rmsprop", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
+        model.compile(optimizer="rmsprop", loss="sparse_categorical_crossentropy", metrics=[tf.keras.metrics.Accuracy()])
         return model
     
