@@ -1,6 +1,6 @@
 
 class Config(object):
-    BATCH_SIZE = 15
+    BATCH_SIZE = 32
 
     EPOCHS = 150
 
@@ -10,5 +10,5 @@ class Config(object):
 
     IMAGE_FOLDER_PATH = 'data/images'
 
-    AUGMENTATION_ENABLE = False
+    AUGMENTATION_ENABLE = True
 

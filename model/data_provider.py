@@ -30,7 +30,7 @@ class DataProvider(keras.utils.Sequence):
             image = image/255
 
             if(self.config.AUGMENTATION_ENABLE and np.random.rand() > 0.5):
-                type = np.random(3)
+                type = np.random.randint(3)
                 if(type == 0):
                     image, mask = rotate(image, mask)
                 elif(type == 1):

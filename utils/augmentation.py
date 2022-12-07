@@ -18,5 +18,5 @@ def rotate(image, mask):
     angle = np.random.randint(1,25)
     M = cv2.getRotationMatrix2D((cX, cY), angle, 1.0)
     image_ = cv2.warpAffine(image, M, (w, h))
-    mask_ =  cv2.warpAffine(mask, M, (w, h))
+    mask_ =  np.expand_dims(cv2.warpAffine(mask, M, (w, h)), 2)
     return image_, mask_

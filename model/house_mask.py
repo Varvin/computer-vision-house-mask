@@ -35,8 +35,11 @@ class HouseMask(object):
         return val_preds
     
     def prediction_to_mask(self, val_pred):
-        mask = np.argmax(val_pred, axis=-1)
-        mask = np.expand_dims(mask, axis=-1)
+        mask = val_pred
+        mask[mask>=0.5] = 1
+        mask[mask<0.5] = 0
+        # mask = np.argmax(val_pred, axis=-1)
+        # mask = np.expand_dims(mask, axis=-1)
         return mask.astype(np.uint8)
 
     
