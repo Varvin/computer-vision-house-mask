@@ -12,6 +12,7 @@ class DataProvider(keras.utils.Sequence):
     def __init__(self, config : Config, annotations):
         self.config = config
         self.annotations = annotations
+        self.files = []
 
     def __len__(self):
         return len(self.annotations) // self.config.BATCH_SIZE
@@ -27,6 +28,7 @@ class DataProvider(keras.utils.Sequence):
             file_name = data[0]
             mask = np.expand_dims(cv2.resize(data[1], self.config.IMAGE_SIZE), 2)
             image = cv2.resize(cv2.cvtColor(cv2.imread(f'{self.config.IMAGE_FOLDER_PATH}/{file_name}'), cv2.COLOR_BGR2RGB), self.config.IMAGE_SIZE)
+            self.files.append(file_name)
             image = image/255
 
             if(self.config.AUGMENTATION_ENABLE and np.random.rand() > 0.5):
@@ -40,7 +42,7 @@ class DataProvider(keras.utils.Sequence):
             
             x[j] = image
             y[j] = mask
-            
+    
         return x, y
     
     def on_epoch_end(self):
