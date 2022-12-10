@@ -137,3 +137,7 @@ data/train/
 data/test/.DS_Store
 
 data/images/
+
+*.h5
+
+.DS_Store

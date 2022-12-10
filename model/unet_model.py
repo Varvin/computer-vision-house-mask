@@ -107,9 +107,7 @@ class UNetModel2(AbstractModelProvider):
         u4 = self.up_block(u3, c1, f[0]) #64 -> 128
         
         outputs = tf.keras.layers.Conv2D(1, 1, padding="same", activation="sigmoid")(u4)
-        # outputs = tf.keras.layers.Conv2D(1, 3, padding="same", activation="sigmoid")(u4)
         # outputs = tf.keras.layers.Conv2D(num_classes, 1, padding="same", activation="softmax")(u4)
-        # outputs = tf.keras.layers.Conv2D(num_classes, 3, padding="same", activation="softmax")(u4)
         model = tf.keras.models.Model(inputs, outputs)
         model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
         # model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
