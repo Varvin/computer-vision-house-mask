@@ -21,7 +21,9 @@
 
 ## Base configuration of project:
 BATCH_SIZE = 32
+
 EPOCHS = 150
+
 IMAGE_SIZE = (256, 256)
 
 the model was trained using its custom dataset
@@ -31,7 +33,9 @@ For annotation used [LabelStudio](https://labelstud.io)
 # Model taken as a basis from lesson 15 (UNetModel)
 ## Model params
 Total params: 3,084,834
+
 Trainable params: 3,081,058
+
 Non-trainable params: 3,776
 
 ## Model Arhitecture
@@ -65,7 +69,9 @@ Images not from data set:
 # Model UNetModel2 using sigmoid and binary_crossentropy
 ## Model params
 Total params: 1,968,513
+
 Trainable params: 1,965,569
+
 Non-trainable params: 2,944
 
 ## Model Arhitecture
@@ -97,7 +103,9 @@ Images not from data set:
 # Model UNetModel2 using softmax and sparse_categorical_crossentropy
 ## Model params
 Total params: 1,968,530
+
 Trainable params: 1,965,586
+
 Non-trainable params: 2,944
 
 ## Train model on all annotated data (without validation set)
