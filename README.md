@@ -106,7 +106,7 @@ train time: 27min
 
 ## Results:
 Images from data set
-![Alt text](info/unet2_model_grafik_nval_softmax.png)
+![Alt text](info/unet2_model_result_test_nval_softmax.png)
 
 Images not from data set:
-![Alt text](info/unet2_model_result_test_nval_softmax.png)
+![Alt text](info/unet2_model_result_nval_softmax.png)
